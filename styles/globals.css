@@ -93,6 +93,7 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+    font-family: "Arial", sans-serif;
 }
 
 a {
@@ -104,10 +105,13 @@ img {
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  margin-right: 2%;
 }
+
 .homeContainer {
   display: flex;
 }
+
 .boldText {
   font-weight: bold;
 }
@@ -120,18 +124,21 @@ img {
   display: flex;
   flex-direction: column;
 }
-/* 
+
+
 .sidebar {
   width: 25%;
   background: #f1f1f1;
   padding: 20px;
+  color: black;
+
 }
 
 .sidebar p {
   margin: 0;
   font-size: 16px;
 }
-
+/*  
 .main {
   width: 75%;
   padding: 20px;

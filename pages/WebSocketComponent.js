@@ -9,19 +9,19 @@ const WebSocketComponent = ({ incrementEventCount, calculateEventRate }) => {
     socket.onmessage = (event) => {
       const eventData = JSON.parse(event.data);
       setEvents((prevEvents) => [eventData, ...prevEvents]);
-       incrementEventCount(); 
-       calculateEventRate();
+      incrementEventCount();
+      calculateEventRate();
     };
     return () => {
       socket.close();
     };
   }, []);
-  
-   useEffect(() => {
-     calculateEventRate(); // Recalculate event rate whenever event count changes
-   }, [events, calculateEventRate]);
 
-   const sortedEvents = [...events].sort((a, b) => b.timestamp - a.timestamp);
+  useEffect(() => {
+    calculateEventRate(); // Recalculate event rate whenever event count changes
+  }, [events, calculateEventRate]);
+
+  const sortedEvents = [...events].sort((a, b) => b.timestamp - a.timestamp);
 
   return (
     <div>
@@ -29,8 +29,8 @@ const WebSocketComponent = ({ incrementEventCount, calculateEventRate }) => {
         <div className="messageContainer" key={event.id}>
           <img src={event.user.image_url} />
           <div className="textContainer">
-          <p className="boldText">{event.user.name}</p>
-          <p>{event.message}</p>
+            <p className="boldText">{event.user.name}</p>
+            <p>{event.message}</p>
           </div>
         </div>
       ))}
