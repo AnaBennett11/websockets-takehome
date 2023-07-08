@@ -16,18 +16,20 @@ const WebSocketComponent = ({ incrementEventCount, calculateEventRate }) => {
       socket.close();
     };
   }, []);
-
+  
    useEffect(() => {
      calculateEventRate(); // Recalculate event rate whenever event count changes
    }, [events, calculateEventRate]);
 
+   const sortedEvents = [...events].sort((a, b) => b.timestamp - a.timestamp);
+
   return (
     <div>
-      {events.map((event) => (
+      {sortedEvents.map((event) => (
         <div key={event.id}>
           <p>{event.message}</p>
         </div>
-      )).sort()}
+      ))}
     </div>
   );
 };
