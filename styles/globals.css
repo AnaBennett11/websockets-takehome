@@ -99,6 +99,9 @@ a {
   color: inherit;
   text-decoration: none;
 }
+.homeContainer{
+    display: flex;
+}
 
 @media (prefers-color-scheme: dark) {
   html {

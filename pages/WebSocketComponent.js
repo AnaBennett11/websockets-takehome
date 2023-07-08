@@ -16,7 +16,7 @@ const WebSocketComponent = ({ incrementEventCount, calculateEventRate }) => {
       socket.close();
     };
   }, []);
-  
+
    useEffect(() => {
      calculateEventRate(); // Recalculate event rate whenever event count changes
    }, [events, calculateEventRate]);
@@ -27,7 +27,7 @@ const WebSocketComponent = ({ incrementEventCount, calculateEventRate }) => {
         <div key={event.id}>
           <p>{event.message}</p>
         </div>
-      ))}
+      )).sort()}
     </div>
   );
 };
