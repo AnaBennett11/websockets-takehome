@@ -26,8 +26,12 @@ const WebSocketComponent = ({ incrementEventCount, calculateEventRate }) => {
   return (
     <div>
       {sortedEvents.map((event) => (
-        <div key={event.id}>
+        <div className="messageContainer" key={event.id}>
+          <img src={event.user.image_url} />
+          <div className="textContainer">
+          <p className="boldText">{event.user.name}</p>
           <p>{event.message}</p>
+          </div>
         </div>
       ))}
     </div>
