@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import WebSocket from "isomorphic-ws";
 
-const WebSocketComponent = () => {
+const WebSocketComponent = ({ incrementEventCount, calculateEventRate }) => {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
@@ -9,18 +9,23 @@ const WebSocketComponent = () => {
     socket.onmessage = (event) => {
       const eventData = JSON.parse(event.data);
       setEvents((prevEvents) => [eventData, ...prevEvents]);
+       incrementEventCount(); 
+       calculateEventRate();
     };
     return () => {
       socket.close();
     };
   }, []);
+  
+   useEffect(() => {
+     calculateEventRate(); // Recalculate event rate whenever event count changes
+   }, [events, calculateEventRate]);
 
   return (
     <div>
       {events.map((event) => (
         <div key={event.id}>
           <p>{event.message}</p>
-          {/* Display other event details as desired */}
         </div>
       ))}
     </div>
