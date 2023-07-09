@@ -19,8 +19,10 @@ const Home = () => {
   return (
     <div className="homeContainer">
       <div className="sidebar">
-        <p>Event Count: {eventCount} </p>
-        <p>Event Rate (per minute): {eventRate} </p>
+        <p> Event Count:</p>
+        <p className="numbers"> {eventCount}</p>
+        <p> Event Rate (per minute):</p>
+        <p className="numbers"> {eventRate}</p>
       </div>
       <div className="main">
         <WebSocketComponent
