@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
 import WebSocket from "isomorphic-ws";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
+
 
 const WebSocketComponent = ({ incrementEventCount, calculateEventRate }) => {
   const [events, setEvents] = useState([]);
@@ -24,17 +28,23 @@ const WebSocketComponent = ({ incrementEventCount, calculateEventRate }) => {
   const sortedEvents = [...events].sort((a, b) => b.timestamp - a.timestamp);
 
   return (
-    <div>
-      {sortedEvents.map((event) => (
-        <div className="messageContainer" key={event.id}>
-          <img src={event.user.image_url} />
-          <div className="textContainer">
-            <p className="boldText">{event.user.name}</p>
-            <p>{event.message}</p>
+    <Card>
+      <CardContent>
+        {sortedEvents.map((event) => (
+          <div className="messageContainer" key={event.id}>
+            <img src={event.user.image_url} />
+            <div className="textContainer">
+              <Typography variant="h6" component="p" className="boldText">
+                {event.user.name}
+              </Typography>
+              <Typography variant="body1" component="p">
+                {event.message}
+              </Typography>
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </CardContent>
+    </Card>
   );
 };
 
